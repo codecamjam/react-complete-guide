@@ -11,6 +11,35 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
+  // useEffect(() => {
+  //   console.log('EFFECT RUNNING');
+  // }); //every time
+
+  // useEffect(() => {
+  //   console.log('EFFECT RUNNING');
+  // }, []); //only once
+
+  // useEffect(() => {
+  //   console.log('EFFECT RUNNING');
+  // }, [enteredPassword]); //first time and every time enteredPassword updates
+
+  // useEffect(() => {
+  //   console.log('EFFECT RUNNING');
+
+  //   return () => {
+  //     console.log('EFFECT CLEANUP');
+  //   };
+  // }, [enteredPassword]); //cleanup runs any time enteredPassword updates
+  // //also when component unmounts
+
+  // useEffect(() => {
+  //   console.log('EFFECT RUNNING');
+
+  //   return () => {
+  //     console.log('EFFECT CLEANUP');
+  //   };
+  // }, []); //cleanup runs when component unmounts
+
   useEffect(() => {
     const identifier = setTimeout(() => {
       setFormIsValid(
@@ -19,7 +48,6 @@ const Login = (props) => {
     }, 500);
 
     return () => {
-      //this is the cleanup function aiding in debouncing validity
       console.log('CLEANUP');
       clearTimeout(identifier);
     };
